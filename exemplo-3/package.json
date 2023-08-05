@@ -9,7 +9,8 @@
     "test": "node ace test",
     "lint": "eslint . --ext=.ts",
     "format": "prettier --write .",
-    "migration": "node ace migration:run"
+    "migration": "node ace migration:run",
+    "seed": "node ace db:seed"
   },
   "eslintConfig": {
     "extends": [
@@ -44,6 +45,7 @@
     "@japa/runner": "^2.5.1",
     "@types/proxy-addr": "^2.0.0",
     "@types/source-map-support": "^0.5.6",
+    "@types/uuid": "^9.0.2",
     "adonis-preset-ts": "^2.1.0",
     "eslint": "^8.46.0",
     "eslint-config-prettier": "^8.10.0",
@@ -56,13 +58,16 @@
     "youch-terminal": "^2.2.2"
   },
   "dependencies": {
+    "@adonisjs/auth": "^8.2.3",
     "@adonisjs/core": "^5.8.0",
     "@adonisjs/lucid": "^18.4.0",
     "@adonisjs/repl": "^3.1.0",
     "luxon": "^3.3.0",
     "pg": "^8.11.2",
+    "phc-argon2": "^1.1.4",
     "proxy-addr": "^2.0.7",
     "reflect-metadata": "^0.1.13",
-    "source-map-support": "^0.5.21"
+    "source-map-support": "^0.5.21",
+    "uuid": "^9.0.0"
   }
 }

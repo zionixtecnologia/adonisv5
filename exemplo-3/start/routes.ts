@@ -20,6 +20,7 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-import './routes/migration'
+import './routes/migrations'
+import './routes/auth'
 
 Route.resource('/users', 'UsersController').apiOnly()
