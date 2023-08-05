@@ -1,6 +1,7 @@
 node_modules
 build
 coverage
+database/pg-data
 .vscode
 .DS_STORE
 .env
