@@ -23,4 +23,6 @@ import Route from '@ioc:Adonis/Core/Route'
 import './routes/migrations'
 import './routes/auth'
 
-Route.resource('/users', 'UsersController').apiOnly()
+Route.group(() => {
+  Route.resource('/users', 'UsersController').apiOnly()
+}).middleware('auth')

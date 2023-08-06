@@ -4,11 +4,10 @@ import { BaseModel, column, beforeCreate, beforeSave } from '@ioc:Adonis/Lucid/O
 import Hash from '@ioc:Adonis/Core/Hash'
 
 export default class User extends BaseModel {
-  @column({ isPrimary: true })
-  public id: number
+  public static selfAssignPrimaryKey = true
 
-  @column()
-  public secure_id: String
+  @column({ isPrimary: true })
+  public id: String
 
   @column()
   public email: String
@@ -24,7 +23,7 @@ export default class User extends BaseModel {
 
   @beforeCreate()
   public static assignUuid(user: User) {
-    user.secure_id = uuidv4()
+    user.id = uuidv4()
   }
 
   @beforeSave()
