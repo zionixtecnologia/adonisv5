@@ -1,5 +1,4 @@
 /* eslint-disable prettier/prettier */
-import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Route from '@ioc:Adonis/Core/Route'
 import User from 'App/Models/User'
 
@@ -8,6 +7,7 @@ Route.post('/login', async ({ auth, request, response }) => {
 
   try {
     const user = await User.findBy('email', email)
+
     const token = await auth
       .use('api')
       .attempt(email, password, { expiresIn: '4 hours', name: user?.serialize().email })
@@ -18,10 +18,19 @@ Route.post('/login', async ({ auth, request, response }) => {
   }
 })
 
-Route.post('/logout', async ({ auth, request }: HttpContextContract) => {
+Route.post('/logout', async ({ auth }) => {
   await auth.use('api').revoke()
 
   return {
     revoked: true,
+  }
+})
+
+Route.get('/profile', async ({ auth }) => {
+  await auth.use('api').authenticate()
+  const user = auth.use('api').user!
+
+  return {
+    user,
   }
 })
