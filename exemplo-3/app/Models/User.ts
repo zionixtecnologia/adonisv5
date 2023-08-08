@@ -10,6 +10,9 @@ export default class User extends BaseModel {
   public id: String
 
   @column()
+  public name: String
+
+  @column()
   public email: String
 
   @column({ serializeAs: null })

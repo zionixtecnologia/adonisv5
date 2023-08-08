@@ -12,7 +12,7 @@ Route.post('/login', async ({ auth, request, response }) => {
       .use('api')
       .attempt(email, password, { expiresIn: '4 hours', name: user?.serialize().email })
 
-    return { token, user: { email: user?.email, id: user?.id } }
+    return { user: { name: user?.name, email: user?.email, id: user?.id, token: token.token } }
   } catch (err) {
     return response.badRequest('Invalid credentials')
   }
